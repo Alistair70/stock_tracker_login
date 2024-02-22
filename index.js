@@ -18,7 +18,7 @@ document.getElementById("login_btn").addEventListener("click", function(event) {
 
     //If checks are cleared request is sent to backend to validate credentials
     else{
-        fetch('/user_login', {
+        fetch('https://stock-tracker-l64w.onrender.com/user_login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -55,7 +55,7 @@ document.getElementById("demo_button").addEventListener("click", function(event)
     const username = 'Jane25'
     const password = '12345'
 
-    fetch('/user_login', {
+    fetch('https://stock-tracker-l64w.onrender.com/user_login', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -80,8 +80,8 @@ document.getElementById("demo_button").addEventListener("click", function(event)
             const expirationTime = new Date(now.getTime() + 15 * 60 * 1000);
             
             // Create a cookie string
-            document.cookie = `stock_tracker_cookie_container=${encoded_id}; expires=${expirationTime.toUTCString()}; path=/`;
-            location.href = '/dash'  
+            document.cookie = `stock_tracker_cookie_container=${encoded_id}; domain=.expense-tracker-demo.site; expires=${expirationTime.toUTCString()}; path=/`;
+            window.location.href = "https://stock-tracker-dashboard.expense-tracker-demo.site"  
         } 
     })
 });
@@ -97,7 +97,6 @@ function cookieCheck()
     cookie_name = "stock_tracker_cookie_container"
     if(document.cookie.split(';').some((item) => item.trim().startsWith(`${cookie_name}=`)))
     {
-        console.log("true")
-        window.location.href = "/dash";
+        window.location.href = "https://stock-tracker-dashboard.expense-tracker-demo.site";
     }
 }
